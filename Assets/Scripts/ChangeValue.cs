@@ -12,7 +12,7 @@ public class ChangeValue : MonoBehaviour
     void Update()
     {
         int last = GameObject.Find("GameProcess").GetComponent<GameStart>().PlayedCards.Count - 1;
-        gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameProcess").GetComponent<GameStart>().PlayedCards[last].GetComponent<SpriteRenderer>().sprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameProcess").GetComponent<GameStart>().PlayedCards[last].GetComponent<Transform>().Find("FrontCard").GetComponent<SpriteRenderer>().sprite;
         gameObject.transform.Find("BackgroundPlayedCard").GetComponent<SpriteRenderer>().color = GameObject.Find("GameProcess").GetComponent<GameStart>().PlayedCards[last].GetComponent<Transform>().Find("BackgroundCard").GetComponent<SpriteRenderer>().color;
     }
 }

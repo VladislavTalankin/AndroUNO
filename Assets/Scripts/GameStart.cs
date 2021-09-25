@@ -248,51 +248,24 @@ public class GameStart : MonoBehaviour
                         case 0: 
                             {
                                 PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Red;
-                                if (PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Type == Card.TypeOrNumber.Joker)
-                                {
-                                    PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/JokerRed");
-                                }
-                                else
-                                {
-                                    PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Plus4Red");
-                                }
                                 break;
                             } 
                         case 1:
                             {
                                 PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Orange;
-                                if (PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Type == Card.TypeOrNumber.Joker)
-                                {
-                                    PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/JokerOrange");
-                                }
-                                else
-                                {
-                                    PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Plus4Orange");
-                                }
                                 break;
                             }
                             
                         case 2:
                             {
                                 PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Green;
-                                if (PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Type == Card.TypeOrNumber.Joker)
-                                {
-                                    PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/JokerGreen");
-                                }
-                                else PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Plus4Green");
                                 break;
                             }
                         case 3:
                             {
                                 PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Blue;
-                                if (PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Type == Card.TypeOrNumber.Joker)
-                                {
-                                    PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/JokerBlue");
-                                }
-                                else PlayedCards[PlayedCards.Count - 1].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Plus4Blue");
                                 break;
-                            }
-                            
+                            }   
                     }
                 }
                 if (ComputersHand.Count == 0)

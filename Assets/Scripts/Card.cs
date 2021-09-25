@@ -56,24 +56,25 @@ public class Card : MonoBehaviour
 
         set
         {
+            GameObject Child = gameObject.transform.Find("FrontCard").gameObject;
             Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/card_mask");
             switch (value)
             {
-                case TypeOrNumber.Zero: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.One: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Two: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Three: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Four: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Five: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Six: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Seven: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Eight: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Nine: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Pass: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Reverse: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Plus2: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Joker: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
-                case TypeOrNumber.Plus4: gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Zero: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.One: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Two: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Three: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Four: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Five: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Six: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Seven: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Eight: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Nine: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Pass: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Reverse: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Plus2: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Joker: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
+                case TypeOrNumber.Plus4: Child.GetComponent<SpriteRenderer>().sprite = sprites[(int)value]; break;
 
             }
             type = value;
