@@ -7,7 +7,6 @@ public class GameStart : MonoBehaviour
 {
     public GameObject ComputerCard;
     public GameObject PreCard;
-    List<GameObject> Cards = new List<GameObject>();
     List<GameObject> SortedCards = new List<GameObject>();
     List<GameObject> PlayersHand = new List<GameObject>();
     List<GameObject> ComputersHand = new List<GameObject>();
@@ -18,10 +17,10 @@ public class GameStart : MonoBehaviour
     {
         for (int i = 0; i <= 14; i++)
         {
-            Cards.Add(Instantiate(PreCard));
-            if (i == 13 || i == 14) Cards[Cards.Count - 1].GetComponent<Card>().Setup(Card.Colors.Black, (Card.TypeOrNumber)i);
-            else Cards[Cards.Count - 1].GetComponent<Card>().Setup(color, (Card.TypeOrNumber)i);
-            Cards[Cards.Count - 1].name = Cards[Cards.Count - 1].GetComponent<Card>().Color.ToString() + Cards[Cards.Count - 1].GetComponent<Card>().Type.ToString();
+            SortedCards.Add(Instantiate(PreCard));
+            if (i == 13 || i == 14) SortedCards[SortedCards.Count - 1].GetComponent<Card>().Setup(Card.Colors.Black, (Card.TypeOrNumber)i);
+            else SortedCards[SortedCards.Count - 1].GetComponent<Card>().Setup(color, (Card.TypeOrNumber)i);
+            SortedCards[SortedCards.Count - 1].name = SortedCards[SortedCards.Count - 1].GetComponent<Card>().Color.ToString() + SortedCards[SortedCards.Count - 1].GetComponent<Card>().Type.ToString();
         }
     }
 
@@ -29,9 +28,9 @@ public class GameStart : MonoBehaviour
     {
         for (int i = 1; i <= 12; i++)
         {
-            Cards.Add(Instantiate(PreCard));
-            Cards[Cards.Count - 1].GetComponent<Card>().Setup(color, (Card.TypeOrNumber)i);
-            Cards[Cards.Count - 1].name = Cards[Cards.Count - 1].GetComponent<Card>().Color.ToString() + Cards[Cards.Count - 1].GetComponent<Card>().Type.ToString();
+            SortedCards.Add(Instantiate(PreCard));
+            SortedCards[SortedCards.Count - 1].GetComponent<Card>().Setup(color, (Card.TypeOrNumber)i);
+            SortedCards[SortedCards.Count - 1].name = SortedCards[SortedCards.Count - 1].GetComponent<Card>().Color.ToString() + SortedCards[SortedCards.Count - 1].GetComponent<Card>().Type.ToString();
         }
     }
 
@@ -50,7 +49,7 @@ public class GameStart : MonoBehaviour
         secondstep(Card.Colors.Green);
         secondstep(Card.Colors.Blue);
 
-        SortedCards = Cards.OrderBy(x => Random.value).ToList();
+        SortedCards = SortedCards.OrderBy(x => Random.value).ToList();
 
         for (int i = 0; i < 7; i++) //раздаем карты игрокам
         {
@@ -94,10 +93,6 @@ public class GameStart : MonoBehaviour
         float h = Mathf.Abs(i) / PlayersHand.Count;
         foreach (GameObject PlayCard in PlayersHand)
         {
-            PlayCard.SetActive(false);
-        }
-        foreach (GameObject PlayCard in PlayersHand)
-        {
             if (i == 0)
             {
                 PlayCard.transform.position = new Vector2(0, -5);
@@ -109,6 +104,10 @@ public class GameStart : MonoBehaviour
                 PlayCard.transform.rotation = Quaternion.Euler(0, 0, (float)Zrot(i) * Mathf.Rad2Deg - 90);
             }
             i += 2*h;
+        }
+        foreach (GameObject PlayCard in PlayersHand)
+        {
+            PlayCard.SetActive(false);
         }
         foreach (GameObject PlayCard in PlayersHand)
         {
@@ -167,14 +166,6 @@ public class GameStart : MonoBehaviour
             PlayersHand.Remove(playingcard);
             UpdateHand(PlayersHand);
             playingcard.transform.position = new Vector3(20, 0, 20);
-            if (PlayedCards[PlayedCards.Count - 2].GetComponent<Card>().Type == Card.TypeOrNumber.Joker)
-            {
-                //PlayedCards[PlayedCards.Count - 2].GetComponent<SpriteRenderer>().sprite = sprites[13];
-            }
-            if (PlayedCards[PlayedCards.Count - 2].GetComponent<Card>().Type == Card.TypeOrNumber.Plus4)
-            {
-                //PlayedCards[PlayedCards.Count - 2].GetComponent<SpriteRenderer>().sprite = sprites[68];
-            }
             if (PlayersHand.Count == 0)
             {
                 SceneManager.LoadScene("Victory");
@@ -286,7 +277,6 @@ public class GameStart : MonoBehaviour
         SortedCards.RemoveAt(SortedCards.Count - 1);
         UpdateComputersHand(ComputersHand);
     }
-    // Update is called once per frame
 
     public void redbutton()
     {
@@ -313,10 +303,6 @@ public class GameStart : MonoBehaviour
         GameObject.Find("ColourMenu").GetComponent<Canvas>().enabled = false;
         PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Blue;
         AIturn();
-    }
-    void Update()
-    {
-        
     }
 
 }
