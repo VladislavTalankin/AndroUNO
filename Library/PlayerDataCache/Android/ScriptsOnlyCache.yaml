@@ -758,4 +758,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/GameScene.unity
   - Assets/Scenes/Victory.unity
   - Assets/Scenes/Lose.unity
-  playerPath: D:/AndroUNO/AndroUNO.apk
+  playerPath: D:/AndroUNO/AndroUNO2.apk

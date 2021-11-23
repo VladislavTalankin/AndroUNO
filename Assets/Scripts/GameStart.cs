@@ -136,7 +136,28 @@ public class GameStart : MonoBehaviour
             i += 2*h;
         }
     }
-    public void turn(GameObject playingcard, Vector2 prepos)
+    void GiveCards(ref List<GameObject> Hand, Card.TypeOrNumber TypeOrNumber)
+    {
+        if(TypeOrNumber == Card.TypeOrNumber.Plus2)
+        {
+            Hand.Add(SortedCards[SortedCards.Count - 1]);
+            SortedCards.RemoveAt(SortedCards.Count - 1);
+            Hand.Add(SortedCards[SortedCards.Count - 1]);
+            SortedCards.RemoveAt(SortedCards.Count - 1);
+        }
+        if(TypeOrNumber == Card.TypeOrNumber.Plus4)
+        {
+            Hand.Add(SortedCards[SortedCards.Count - 1]);
+            SortedCards.RemoveAt(SortedCards.Count - 1);
+            Hand.Add(SortedCards[SortedCards.Count - 1]);
+            SortedCards.RemoveAt(SortedCards.Count - 1);
+            Hand.Add(SortedCards[SortedCards.Count - 1]);
+            SortedCards.RemoveAt(SortedCards.Count - 1);
+            Hand.Add(SortedCards[SortedCards.Count - 1]);
+            SortedCards.RemoveAt(SortedCards.Count - 1);
+        }
+    }
+    public void turn(GameObject playingcard, ref bool GoesBack)
     {
         if (playingcard.GetComponent<Card>().Type == PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Type
             || playingcard.GetComponent<Card>().Color == PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color
@@ -144,22 +165,12 @@ public class GameStart : MonoBehaviour
         {
             if (playingcard.GetComponent<Card>().Type == Card.TypeOrNumber.Plus2)
             {
-                ComputersHand.Add(SortedCards[SortedCards.Count - 1]);
-                SortedCards.RemoveAt(SortedCards.Count - 1);
-                ComputersHand.Add(SortedCards[SortedCards.Count - 1]);
-                SortedCards.RemoveAt(SortedCards.Count - 1);
+                GiveCards(ref ComputersHand, Card.TypeOrNumber.Plus2);
                 UpdateComputersHand(ComputersHand);
             }
             if (playingcard.GetComponent<Card>().Type == Card.TypeOrNumber.Plus4)
             {
-                ComputersHand.Add(SortedCards[SortedCards.Count - 1]);
-                SortedCards.RemoveAt(SortedCards.Count - 1);
-                ComputersHand.Add(SortedCards[SortedCards.Count - 1]);
-                SortedCards.RemoveAt(SortedCards.Count - 1);
-                ComputersHand.Add(SortedCards[SortedCards.Count - 1]);
-                SortedCards.RemoveAt(SortedCards.Count - 1);
-                ComputersHand.Add(SortedCards[SortedCards.Count - 1]);
-                SortedCards.RemoveAt(SortedCards.Count - 1);
+                GiveCards(ref ComputersHand, Card.TypeOrNumber.Plus4);
                 UpdateComputersHand(ComputersHand);
             }
             PlayedCards.Add(playingcard);
@@ -184,7 +195,7 @@ public class GameStart : MonoBehaviour
         }
         else
         {
-            playingcard.transform.position = prepos;
+            GoesBack = true;
             return;
         }
     }
@@ -210,22 +221,12 @@ public class GameStart : MonoBehaviour
             {
                 if (choosencard.GetComponent<Card>().Type == Card.TypeOrNumber.Plus2)
                 {
-                    PlayersHand.Add(SortedCards[SortedCards.Count - 1]);
-                    SortedCards.RemoveAt(SortedCards.Count - 1);
-                    PlayersHand.Add(SortedCards[SortedCards.Count - 1]);
-                    SortedCards.RemoveAt(SortedCards.Count - 1);
+                    GiveCards(ref PlayersHand, Card.TypeOrNumber.Plus2);
                     UpdateHand(PlayersHand);
                 }
                 if (choosencard.GetComponent<Card>().Type == Card.TypeOrNumber.Plus4)
                 {
-                    PlayersHand.Add(SortedCards[SortedCards.Count - 1]);
-                    SortedCards.RemoveAt(SortedCards.Count - 1);
-                    PlayersHand.Add(SortedCards[SortedCards.Count - 1]);
-                    SortedCards.RemoveAt(SortedCards.Count - 1);
-                    PlayersHand.Add(SortedCards[SortedCards.Count - 1]);
-                    SortedCards.RemoveAt(SortedCards.Count - 1);
-                    PlayersHand.Add(SortedCards[SortedCards.Count - 1]);
-                    SortedCards.RemoveAt(SortedCards.Count - 1);
+                    GiveCards(ref PlayersHand, Card.TypeOrNumber.Plus4);
                     UpdateHand(PlayersHand);
                 }
                 PlayedCards.Add(choosencard);
@@ -236,27 +237,10 @@ public class GameStart : MonoBehaviour
                     int randomcolor = Random.Range(0, 4);
                     switch (randomcolor)
                     {
-                        case 0: 
-                            {
-                                PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Red;
-                                break;
-                            } 
-                        case 1:
-                            {
-                                PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Orange;
-                                break;
-                            }
-                            
-                        case 2:
-                            {
-                                PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Green;
-                                break;
-                            }
-                        case 3:
-                            {
-                                PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Blue;
-                                break;
-                            }   
+                        case 0: PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Red; break;
+                        case 1: PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Orange; break; 
+                        case 2: PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Green; break;
+                        case 3: PlayedCards[PlayedCards.Count - 1].GetComponent<Card>().Color = Card.Colors.Blue; break;
                     }
                 }
                 if (ComputersHand.Count == 0)

@@ -35,7 +35,7 @@ public class CardMovement : MonoBehaviour
     {
         if (gameObject.transform.position.x >= -2 && gameObject.transform.position.y >= -3 && gameObject.transform.position.x <= 2 && gameObject.transform.position.y <= 3)
         {
-            GameObject.Find("GameProcess").GetComponent<GameStart>().turn(gameObject, prepos);
+            GameObject.Find("GameProcess").GetComponent<GameStart>().turn(gameObject, ref GoesBack);
         }
         else GoesBack = true;
     }

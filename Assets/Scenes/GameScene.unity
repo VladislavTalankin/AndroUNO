@@ -274,8 +274,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462363855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.0254407, y: 3.7690806, z: 1.2563602}
+  m_LocalPosition: {x: 0.616, y: -0.341, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1526,15 +1526,15 @@ RectTransform:
   m_GameObject: {fileID: 2129174538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 1714475165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 349.1, y: 0}
-  m_SizeDelta: {x: 105.2, y: 110.2}
+  m_AnchoredPosition: {x: 341, y: 0}
+  m_SizeDelta: {x: 200, y: 156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129174540
 MonoBehaviour:
@@ -1789,5 +1789,5 @@ SortingGroup:
   m_GameObject: {fileID: 4142885116947344452}
   m_Enabled: 1
   m_SortingLayerID: -252588459
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
